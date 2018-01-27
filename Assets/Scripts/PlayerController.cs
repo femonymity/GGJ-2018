@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour {
 
 	private Queue<PlayerInput> inputs;
 	private PlayerInput currentInput;
+	private GameController gameCon;
 	private int maxInputs { get; set; }
 	private float timeToBeat;
 	private float jumpTime;
@@ -21,6 +22,7 @@ public class PlayerController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		inputs = new Queue<PlayerInput> ();
+		gameCon = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
 		maxInputs = 8;
 		timeToBeat = beatInterval;
 	}
@@ -58,7 +60,12 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D (Collision2D other) {
-		rb.velocity = new Vector2 (rb.velocity.x, 0.0f);
+		if (other.gameObject.tag == "Obstacle") {
+			killPlayer ();
+		} else if (other.gameObject.tag == "Terrain" && falling) {
+			rb.velocity = new Vector2 (rb.velocity.x, 0.0f);
+			falling = false;
+		}
 	}
 
 	private void getPlayerInput() {
@@ -104,5 +111,29 @@ public class PlayerController : MonoBehaviour {
 		jumping = true;
 		jumpTime = 0.35f;
 		airTime = 0.05f;
+	}
+
+	public void spawnPlayer() {
+		//TODO
+
+	}
+
+	private void killPlayer() {
+		GameObject.FindGameObjectWithTag ("MusicController").GetComponent<MusicController>().pauseMusic();
+		//TODO play player death animation
+		//animation should call endOfPlayerDeath on last frame
+
+	}
+
+	public void endOfPlayerDeath() {
+		gameCon.resetLevel ();
+	}
+
+	public void disablePlayer() {
+		gameObject.SetActive (false);
+	}
+
+	public void enablePlayer() {
+		gameObject.SetActive (true);
 	}
 }
