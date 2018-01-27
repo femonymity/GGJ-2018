@@ -9,6 +9,7 @@ public class LevelSegment : MonoBehaviour {
 
 	private Collider2D coll;
 	private Plane[] planes;
+	private bool destroyOnExit;
 
 	// Use this for initialization
 	void Start () {
@@ -20,9 +21,11 @@ public class LevelSegment : MonoBehaviour {
 	void Update () {
 		scroll ();
 
-		if (GeometryUtility.TestPlanesAABB (planes, coll.bounds)) {
-
-		} else {
+		bool onScreen = GeometryUtility.TestPlanesAABB (planes, coll.bounds);
+		if (onScreen) {
+			destroyOnExit = true;
+		}
+		if (destroyOnExit && !onScreen) {
 			Destroy (gameObject);
 		}
 	}

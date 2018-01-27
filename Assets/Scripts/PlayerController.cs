@@ -33,8 +33,6 @@ public class PlayerController : MonoBehaviour {
 			float diff = timeToBeat * -1;
 			timeToBeat = beatInterval + diff;
 		}
-
-		Debug.Log (timeToBeat);
 	}
 
 	private void getPlayerInput() {
@@ -63,13 +61,13 @@ public class PlayerController : MonoBehaviour {
 		//TODO reduce hitbox height
 	}
 
-	private void longJump() {
+	private void longjump() {
 		//TODO play animation
 
 		rb.AddForce (new Vector2(0.0f, 300.0f));
 	}
 
-	private void highJump() {
+	private void highjump() {
 		//TODO play animation
 
 		rb.AddForce (new Vector2(0.0f, 300.0f));
