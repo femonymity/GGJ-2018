@@ -181,7 +181,6 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -254,7 +253,6 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -774,6 +772,7 @@ GameObject:
   - component: {fileID: 896349279}
   - component: {fileID: 896349278}
   - component: {fileID: 896349280}
+  - component: {fileID: 896349281}
   m_Layer: 0
   m_Name: char_enemy_alienShip-dead
   m_TagString: Obstacle
@@ -832,8 +831,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 896349277}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.2107387, y: -3.3012328, z: 0}
-  m_LocalScale: {x: 0.29582804, y: 0.5200484, z: 0.85746306}
+  m_LocalPosition: {x: 7.46, y: -3.48, z: 0}
+  m_LocalScale: {x: 0.24948704, y: 0.4385836, z: 0.7231428}
   m_Children: []
   m_Father: {fileID: 918115789}
   m_RootOrder: 3
@@ -847,10 +846,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.3578273, y: 0.33897293}
+  m_Offset: {x: 0.33535457, y: -0.10947114}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -861,7 +860,32 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.0636377, y: 2.6794007}
+  m_Size: {x: 2.1085835, y: 1.7825125}
+  m_EdgeRadius: 0
+--- !u!61 &896349281
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 896349277}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.44694954, y: 0.3582034}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.96, y: 5.12}
+    newSize: {x: 5.96, y: 5.12}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.9110168, y: 2.7179298}
   m_EdgeRadius: 0
 --- !u!1 &918115788
 GameObject:
@@ -4534,8 +4558,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1214740035}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 18.227465, y: -3.3012328, z: 0}
-  m_LocalScale: {x: 0.29582804, y: 0.5200484, z: 0.85746306}
+  m_LocalPosition: {x: 18.325, y: -3.448, z: 0}
+  m_LocalScale: {x: 0.26321292, y: 0.46271288, z: 0.76292753}
   m_Children: []
   m_Father: {fileID: 918115789}
   m_RootOrder: 4
@@ -4633,7 +4657,6 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -5346,7 +5369,6 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10

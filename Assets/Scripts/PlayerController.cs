@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-	void OnCollisionEnter2D (Collision2D other) {
+	void OnTriggerEnter2D (Collider2D other) {
 		if (other.gameObject.tag == "Obstacle") {
 			killPlayer ();
 		} else if (other.gameObject.tag == "Terrain" && falling) {
@@ -130,6 +130,7 @@ public class PlayerController : MonoBehaviour {
 	private void killPlayer() {
 		MusicController musicCon = GameObject.FindGameObjectWithTag ("MusicController").GetComponent<MusicController> ();
 		musicCon.pauseMusic();
+		musicCon.playDeathSound ();
 
 		anim.SetTrigger ("Death");
 
@@ -147,5 +148,9 @@ public class PlayerController : MonoBehaviour {
 
 	public void enablePlayer() {
 		gameObject.SetActive (true);
+	}
+
+	public void resetTimer() {
+		timeToBeat = beatInterval;
 	}
 }

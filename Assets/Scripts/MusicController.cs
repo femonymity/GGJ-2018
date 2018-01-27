@@ -26,7 +26,6 @@ public class MusicController : MonoBehaviour {
 	}
 
 	public void playDeathSound() {
-		deathSource.time = 0.0f;
 		deathSource.Play ();
 	}
 }
