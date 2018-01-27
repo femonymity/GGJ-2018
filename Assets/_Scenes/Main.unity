@@ -137,7 +137,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 110411237}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -30, z: 0}
+  m_LocalPosition: {x: 0, y: -20, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1565916242}
@@ -170,7 +170,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 3
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -242,7 +242,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 3
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -326,8 +326,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 930176729}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.4, y: 3, z: 0}
-  m_LocalScale: {x: 3.1857116, y: 2.0404665, z: 2.0404665}
+  m_LocalPosition: {x: -0.32, y: 1.71, z: 0}
+  m_LocalScale: {x: 1.820797, y: 1.1662309, z: 1.1662309}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -372,7 +372,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5e0121a76324e748b676294927ccdde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 0.3
+  scrollSpeed: 5
+  runnerCam: {fileID: 136338189}
 --- !u!1 &957855197
 GameObject:
   m_ObjectHideFlags: 0
@@ -440,8 +441,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 957855197}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.335125, y: -17.3, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -1.04, y: -11.35, z: 0}
+  m_LocalScale: {x: 0.6418374, y: 0.6418374, z: 0.6418374}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -470,7 +471,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1333422444}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -15, z: 0}
+  m_LocalPosition: {x: 0, y: -10, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1565916242}
@@ -503,7 +504,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 3
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -585,8 +586,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1399424802}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.6, y: -28.5, z: 0}
-  m_LocalScale: {x: 2.1317735, y: 1, z: 1}
+  m_LocalPosition: {x: -1.08, y: -20, z: 0}
+  m_LocalScale: {x: 1.4689924, y: 0.5005126, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -693,8 +694,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1690390334}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -24.98, y: -3.39, z: 0}
-  m_LocalScale: {x: 0.57780147, y: 0.57780147, z: 0.57780147}
+  m_LocalPosition: {x: -14.6, y: -1.79, z: 0}
+  m_LocalScale: {x: 0.3877316, y: 0.3877316, z: 0.3877316}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -731,8 +732,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 4.56, y: 4.68}
+  m_Offset: {x: 0.8049295, y: 0}
+  m_Size: {x: 2.3901947, y: 4.68}
   m_Direction: 0
 --- !u!114 &1690390339
 MonoBehaviour:
@@ -745,6 +746,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe96125585d4a5f44a79d6992df6e7e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  beatInterval: 4
   rb: {fileID: 1690390337}
 --- !u!1 &2027833385
 GameObject:
