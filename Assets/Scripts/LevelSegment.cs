@@ -36,14 +36,16 @@ public class LevelSegment : MonoBehaviour {
 	public void resetLevel() {
 		levelReady = false;
 		stopScrolling ();
-		StartCoroutine ("scrollToStart");
+		StartCoroutine ("ScrollToStart");
 	}
 
-	IEnumerable scrollToStart() {
-		while (transform.position.x != 0f) {
+	IEnumerator ScrollToStart() {
+		Debug.Log ("start scroll");
+		while (!Mathf.Approximately(transform.position.x, 0.0f)) {
 			transform.position = Vector2.MoveTowards (transform.position, new Vector2 (0f, transform.position.y), 20 * Time.deltaTime);
 			yield return null;
 		}
+		Debug.Log ("done scrolling");
 		levelReady = true;
 	}
 }

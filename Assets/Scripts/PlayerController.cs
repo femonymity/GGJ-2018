@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour {
 	private Queue<PlayerInput> inputs;
 	private PlayerInput currentInput;
 	private GameController gameCon;
+	private Animator anim;
 	private int maxInputs { get; set; }
 	private float timeToBeat;
 	private float jumpTime;
@@ -16,6 +17,8 @@ public class PlayerController : MonoBehaviour {
 	private bool jumping = false;
 	private bool falling = false;
 
+
+	public Vector2 startLocation;
 	public float beatInterval;
 	public Rigidbody2D rb;
 
@@ -23,6 +26,9 @@ public class PlayerController : MonoBehaviour {
 	void Start () {
 		inputs = new Queue<PlayerInput> ();
 		gameCon = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
+		anim = GetComponent<Animator> ();
+
+		startLocation = new Vector2 (-9.5f, -1.2f);
 		maxInputs = 8;
 		timeToBeat = beatInterval;
 	}
@@ -115,17 +121,21 @@ public class PlayerController : MonoBehaviour {
 
 	public void spawnPlayer() {
 		//TODO
-
+		transform.position = startLocation;
+		enablePlayer();
+		GetComponent<SpriteRenderer> ().enabled = true;
+		Debug.Log ("player spawned");
 	}
 
 	private void killPlayer() {
-		GameObject.FindGameObjectWithTag ("MusicController").GetComponent<MusicController>().pauseMusic();
-		//TODO play player death animation
-		//animation should call endOfPlayerDeath on last frame
+		GameObject.FindGameObjectWithTag ("MusicController").GetComponent<MusicController>().pauseMusic();		
+		anim.SetTrigger ("Death");
 
+		inputs.Clear ();
 	}
 
 	public void endOfPlayerDeath() {
+		disablePlayer ();
 		gameCon.resetLevel ();
 	}
 

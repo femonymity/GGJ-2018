@@ -20,8 +20,9 @@ public class GameController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (resettingLevel && level.levelReady) {
+			resettingLevel = false;
 			player.spawnPlayer ();
-			Invoke ("startPlay", 3.0f);
+			Invoke ("startPlay", 2.0f);
 		}
 	}
 
@@ -31,6 +32,7 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void startPlay() {
+		Debug.Log ("starting game");
 		musicCon.restartMusic ();
 		level.startScrolling ();
 	}
