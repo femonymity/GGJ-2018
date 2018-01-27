@@ -22,7 +22,7 @@ public class NewBehaviourScript : MonoBehaviour {
 
 	private void getPlayerInput() {
 
-		if ()
+		//if ()
 		
 		if (Input.GetButtonDown ("jump")) {
 			inputs.Add (new PlayerInput ("jump"));
