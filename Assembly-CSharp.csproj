@@ -54,7 +54,9 @@
      <Compile Include="Assets\Scripts\DestroyOnContact.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\LevelSegment.cs" />
+     <Compile Include="Assets\Scripts\MusicalNoteController.cs" />
      <Compile Include="Assets\Scripts\MusicController.cs" />
+     <Compile Include="Assets\Scripts\NoteMover.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\PlayerInput.cs" />
  <Reference Include="UnityEngine.UI">
