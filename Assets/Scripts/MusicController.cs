@@ -4,26 +4,29 @@ using UnityEngine;
 
 public class MusicController : MonoBehaviour {
 
-	private AudioSource source;
-
-	public AudioClip music;
+	public AudioSource musicSource;
+	public AudioSource deathSource;
 
 	// Use this for initialization
 	void Start () {
-		source = GetComponent<AudioSource> ();
-		source.clip = music;
+
 	}
 	
 	public void startMusic() {
-		source.Play ();
+		musicSource.Play ();
 	}
 
 	public void restartMusic() {
-		source.time = 0.0f;
-		source.Play ();
+		musicSource.time = 0.0f;
+		musicSource.Play ();
 	}
 
 	public void pauseMusic() {
-		source.Pause ();
+		musicSource.Pause ();
+	}
+
+	public void playDeathSound() {
+		deathSource.time = 0.0f;
+		deathSource.Play ();
 	}
 }

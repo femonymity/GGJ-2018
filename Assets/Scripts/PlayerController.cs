@@ -128,7 +128,9 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	private void killPlayer() {
-		GameObject.FindGameObjectWithTag ("MusicController").GetComponent<MusicController>().pauseMusic();		
+		MusicController musicCon = GameObject.FindGameObjectWithTag ("MusicController").GetComponent<MusicController> ();
+		musicCon.pauseMusic();
+
 		anim.SetTrigger ("Death");
 
 		inputs.Clear ();

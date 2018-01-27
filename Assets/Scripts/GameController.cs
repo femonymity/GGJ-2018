@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour {
 		player = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerController> ();
 		level = GameObject.FindGameObjectWithTag ("Terrain").GetComponent<LevelSegment> ();
 		resettingLevel = false;
+		musicCon.startMusic ();
 	}
 	
 	// Update is called once per frame
