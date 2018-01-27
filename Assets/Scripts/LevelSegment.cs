@@ -8,6 +8,7 @@ public class LevelSegment : MonoBehaviour {
 	public Camera runnerCam;
 
 	private Collider2D coll;
+	private SpriteRenderer sprite;
 	private Plane[] planes;
 	private bool destroyOnExit;
 
@@ -15,6 +16,7 @@ public class LevelSegment : MonoBehaviour {
 	void Start () {
 		planes = GeometryUtility.CalculateFrustumPlanes (runnerCam);
 		coll = GetComponent<Collider2D> ();
+		sprite = GetComponent<SpriteRenderer> ();
 	}
 	
 	// Update is called once per frame
@@ -32,5 +34,12 @@ public class LevelSegment : MonoBehaviour {
 
 	private void scroll() {
 		transform.position = new Vector2 (transform.position.x - (scrollSpeed * Time.deltaTime), transform.position.y);
+	}
+
+	public float segmentEdgeToScreenEdge() {
+		Vector3 screenPos = runnerCam.WorldToScreenPoint (transform.position);
+		float xDist = screenPos.x + (sprite.bounds.size.x / 2);
+
+		return xDist;
 	}
 }

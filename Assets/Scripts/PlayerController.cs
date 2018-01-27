@@ -8,6 +8,12 @@ public class PlayerController : MonoBehaviour {
 	private PlayerInput currentInput;
 	private int maxInputs { get; set; }
 	private float timeToBeat;
+	private float jumpTime;
+	private float airTime;
+
+	private bool hanging = false;
+	private bool jumping = false;
+	private bool falling = false;
 
 	public float beatInterval;
 	public Rigidbody2D rb;
@@ -33,6 +39,26 @@ public class PlayerController : MonoBehaviour {
 			float diff = timeToBeat * -1;
 			timeToBeat = beatInterval + diff;
 		}
+
+		if (jumping) {
+			jumpTime -= Time.deltaTime;
+			if (jumpTime <= 0.0f) {
+				jumping = false;
+				hanging = true;
+				rb.velocity = new Vector2 (rb.velocity.x, 0.0f);
+			}
+		} else if (hanging) {
+			airTime -= Time.deltaTime;
+			if (airTime <= 0.0f) {
+				hanging = false;
+				falling = true;
+				rb.velocity = new Vector2 (rb.velocity.x, -8.0f);
+			}
+		}
+	}
+
+	void OnCollisionEnter2D (Collision2D other) {
+		rb.velocity = new Vector2 (rb.velocity.x, 0.0f);
 	}
 
 	private void getPlayerInput() {
@@ -52,7 +78,10 @@ public class PlayerController : MonoBehaviour {
 	private void jump() {
 		//TODO play animation
 
-		rb.AddForce (new Vector2(0.0f, 200.0f));
+		jumping = true;
+		jumpTime = 0.25f;
+		airTime = 0.1f;
+		rb.velocity = new Vector2 (rb.velocity.x, 12.0f);
 	}
 
 	private void duck() {
@@ -64,12 +93,16 @@ public class PlayerController : MonoBehaviour {
 	private void longjump() {
 		//TODO play animation
 
-		rb.AddForce (new Vector2(0.0f, 300.0f));
+		jumping = true;
+		jumpTime = 0.15f;
+		airTime = 0.3f;
 	}
 
 	private void highjump() {
 		//TODO play animation
 
-		rb.AddForce (new Vector2(0.0f, 300.0f));
+		jumping = true;
+		jumpTime = 0.35f;
+		airTime = 0.05f;
 	}
 }
