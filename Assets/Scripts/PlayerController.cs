@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour {
 	private PlayerInput currentInput;
 	private GameController gameCon;
 	private Animator anim;
+	private Animator midiAnim;
 	private float timeToBeat;
 	private float jumpTime;
 	private float airTime;
@@ -15,7 +16,6 @@ public class PlayerController : MonoBehaviour {
 	public bool hanging = false;
 	public bool jumping = false;
 	public bool falling = false;
-
 	public bool sliding = false;
 
 	public Vector2 startLocation;
@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour {
 		correctInputs = new Queue<PlayerInput> ();
 		gameCon = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
 		anim = GetComponent<Animator> ();
+		midiAnim = GameObject.FindGameObjectWithTag("M1D1").GetComponent<Animator>();
 
 		startLocation = new Vector2 (-9.5f, -1.2f);
 	}
@@ -76,16 +77,20 @@ public class PlayerController : MonoBehaviour {
 		string inputName = "";
 		if (Input.GetButtonDown ("jump")) {
 			inputName = "jump";
+			midiAnim.SetTrigger ("Jump");
 			correctInput = addCorrectInput (inputName);
 		} else if (Input.GetButtonDown ("duck")) {
 			inputName = "duck";
 			correctInput = addCorrectInput (inputName);
+			midiAnim.SetTrigger ("Duck");
 		} else if (Input.GetButtonDown ("longjump")) {
 			inputName = "longjump";
 			correctInput = addCorrectInput (inputName);
+			midiAnim.SetTrigger ("LongJump");
 		} else if (Input.GetButtonDown ("highjump")) {
 			inputName = "highjump";
 			correctInput = addCorrectInput (inputName);
+			midiAnim.SetTrigger ("HighJump");
 		}
 
 		if ((inputName != string.Empty) && !correctInput) {

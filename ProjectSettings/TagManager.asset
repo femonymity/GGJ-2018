@@ -11,6 +11,7 @@ TagManager:
   - ActionTrigger
   - NoteParent
   - Parallax
+  - M1D1
   layers:
   - Default
   - TransparentFX
