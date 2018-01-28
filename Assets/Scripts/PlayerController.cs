@@ -91,9 +91,9 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		if (inputName != string.Empty) {
+			success = destroyCorrectNote (inputName);
 			if (success) {
 				Debug.Log ("hit");
-				destroyCorrectNote (inputName);
 				correctInputs.Enqueue(new PlayerInput(inputName));
 			} else {
 				Debug.Log ("miss");
@@ -117,7 +117,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	private void jump() {
-		if (!falling || jumping || hanging) {
+		if (!falling && !jumping && !hanging) {
 			anim.SetTrigger ("Jump");
 
 			jumping = true;
@@ -128,13 +128,13 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	private void duck() {
-		if (!falling || jumping || hanging) {
+		if (!falling && !jumping && !hanging) {
 			anim.SetTrigger ("Slide");
 		}
 	}
 
 	private void longjump() {
-		if (!falling || jumping || hanging) {
+		if (!falling && !jumping && !hanging) {
 			anim.SetTrigger ("Jump");
 
 			jumping = true;
@@ -145,7 +145,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	private void highjump() {
-		if (!falling || jumping || hanging) {
+		if (!falling && !jumping && !hanging) {
 			anim.SetTrigger ("Jump");
 
 			jumping = true;
