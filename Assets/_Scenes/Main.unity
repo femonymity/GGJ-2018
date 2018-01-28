@@ -88,7 +88,6 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
-    m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -171,6 +170,10 @@ Prefab:
         type: 2}
       propertyPath: m_Size.x
       value: 0.27253675
+      objectReference: {fileID: 0}
+    - target: {fileID: 4576035884105612, guid: fbf2888ff3a6143c5986cb659d6d68d2, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fbf2888ff3a6143c5986cb659d6d68d2, type: 2}
@@ -271,7 +274,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 136338185}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 2.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1565916242}
@@ -304,7 +307,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3
+  orthographic size: 6
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -328,11 +331,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4214351781368384, guid: a54a0d9e56513874c82740e33c0682a7, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -0.4791
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4214351781368384, guid: a54a0d9e56513874c82740e33c0682a7, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -4.749
+      value: -4.66
       objectReference: {fileID: 0}
     - target: {fileID: 4214351781368384, guid: a54a0d9e56513874c82740e33c0682a7, type: 2}
       propertyPath: m_LocalPosition.z
@@ -356,7 +359,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4214351781368384, guid: a54a0d9e56513874c82740e33c0682a7, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1331214247678472, guid: a54a0d9e56513874c82740e33c0682a7, type: 2}
       propertyPath: m_Name
@@ -452,6 +455,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPos: {fileID: 0}
   parallaxScrollSpeed: 0.5
+--- !u!4 &517275400 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4119778617022542, guid: e88424f53cb22744183bca82a5375cb5,
+    type: 2}
+  m_PrefabInternal: {fileID: 938741995}
 --- !u!1 &918115788
 GameObject:
   m_ObjectHideFlags: 0
@@ -475,9 +483,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 918115788}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.8, y: 2.31, z: 0}
+  m_LocalPosition: {x: 0, y: 2.31, z: 0}
   m_LocalScale: {x: 1.7479117, y: 1.1662309, z: 1.1662309}
   m_Children:
+  - {fileID: 517275400}
   - {fileID: 930176731}
   - {fileID: 1285565528}
   - {fileID: 1254536133}
@@ -496,7 +505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44b9d4f24c5ae724991bebb12eb79a08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 5
+  scrollSpeed: 7
   levelReady: 1
   runnerCam: {fileID: 136338189}
 --- !u!4 &930176731 stripped
@@ -504,6 +513,48 @@ Transform:
   m_PrefabParentObject: {fileID: 4214351781368384, guid: a54a0d9e56513874c82740e33c0682a7,
     type: 2}
   m_PrefabInternal: {fileID: 276240171}
+--- !u!1001 &938741995
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 918115789}
+    m_Modifications:
+    - target: {fileID: 4119778617022542, guid: e88424f53cb22744183bca82a5375cb5, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4119778617022542, guid: e88424f53cb22744183bca82a5375cb5, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4119778617022542, guid: e88424f53cb22744183bca82a5375cb5, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4119778617022542, guid: e88424f53cb22744183bca82a5375cb5, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4119778617022542, guid: e88424f53cb22744183bca82a5375cb5, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4119778617022542, guid: e88424f53cb22744183bca82a5375cb5, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4119778617022542, guid: e88424f53cb22744183bca82a5375cb5, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4119778617022542, guid: e88424f53cb22744183bca82a5375cb5, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: e88424f53cb22744183bca82a5375cb5, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &957855197
 GameObject:
   m_ObjectHideFlags: 0
@@ -632,7 +683,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4214351781368384, guid: a54a0d9e56513874c82740e33c0682a7, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: runnerCam
@@ -704,7 +755,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 4.5, y: 4.5}
-    newSize: {x: 19.2, y: 10.8}
+    newSize: {x: 0.90000004, y: 0.90000004}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -769,7 +820,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4214351781368384, guid: a54a0d9e56513874c82740e33c0682a7, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: runnerCam
@@ -841,7 +892,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 4.5, y: 4.5}
-    newSize: {x: 19.2, y: 10.8}
+    newSize: {x: 0.90000004, y: 0.90000004}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -1083,7 +1134,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4214351781368384, guid: a54a0d9e56513874c82740e33c0682a7, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: runnerCam
@@ -1155,7 +1206,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 4.5, y: 4.5}
-    newSize: {x: 19.2, y: 10.8}
+    newSize: {x: 0.90000004, y: 0.90000004}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
