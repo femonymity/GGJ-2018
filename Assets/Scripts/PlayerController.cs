@@ -18,6 +18,9 @@ public class PlayerController : MonoBehaviour {
 	public bool falling = false;
 	public bool sliding = false;
 
+	private float fallSpeed = -12.0f;
+	private float jumpSpeed = 12.0f;
+
 	public Vector2 startLocation;
 	public float inputDelay = 2.5f;
 	public Rigidbody2D rb;
@@ -49,7 +52,7 @@ public class PlayerController : MonoBehaviour {
 				anim.SetTrigger ("Falling");
 				hanging = false;
 				falling = true;
-				rb.velocity = new Vector2 (rb.velocity.x, -8.0f);
+				rb.velocity = new Vector2 (rb.velocity.x, fallSpeed);
 			}
 		}
 	}
@@ -123,7 +126,7 @@ public class PlayerController : MonoBehaviour {
 			jumping = true;
 			jumpTime = 0.25f;
 			airTime = 0.1f;
-			rb.velocity = new Vector2 (rb.velocity.x, 12.0f);
+			rb.velocity = new Vector2 (rb.velocity.x, jumpSpeed);
 		}
 	}
 
@@ -140,7 +143,7 @@ public class PlayerController : MonoBehaviour {
 			jumping = true;
 			jumpTime = 0.2f;
 			airTime = 0.7f;
-			rb.velocity = new Vector2 (rb.velocity.x, 12.0f);
+			rb.velocity = new Vector2 (rb.velocity.x, jumpSpeed);
 		}
 	}
 
@@ -151,7 +154,7 @@ public class PlayerController : MonoBehaviour {
 			jumping = true;
 			jumpTime = 0.35f;
 			airTime = 0.05f;
-			rb.velocity = new Vector2 (rb.velocity.x, 12.0f);
+			rb.velocity = new Vector2 (rb.velocity.x, jumpSpeed);
 		}
 	}
 
