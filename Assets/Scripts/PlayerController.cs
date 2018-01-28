@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour {
 			if (note.GetComponent<NoteMover> ().isInZone ()) {
 				correctInputs.Enqueue (new PlayerInput (inputName));
 				success = true;
-				Destroy (note);
+				note.SetActive (false);
 				Debug.Log ("Right");
 			}
 		}
@@ -146,6 +146,7 @@ public class PlayerController : MonoBehaviour {
 	private void killPlayer() {
 		rb.constraints &= ~RigidbodyConstraints2D.FreezePositionX;
 		MusicController musicCon = GameObject.FindGameObjectWithTag ("MusicController").GetComponent<MusicController> ();
+		gameCon.stopAllNotes ();
 		musicCon.pauseMusic();
 		musicCon.playDeathSound ();
 

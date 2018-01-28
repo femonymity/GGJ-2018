@@ -5,6 +5,6 @@ using UnityEngine;
 public class DestroyOnContact : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D other) {
-		Destroy (other.gameObject);
+		other.gameObject.SetActive (false);
 	}
 }
