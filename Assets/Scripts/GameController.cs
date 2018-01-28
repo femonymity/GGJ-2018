@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour {
 	public PlayerController player;
 	public bool resettingLevel;
 	private GameObject noteParent;
+	private BackgroundController parallax;
 
 	// Use this for initialization
 	void Start () {
@@ -16,6 +17,7 @@ public class GameController : MonoBehaviour {
 		player = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerController> ();
 		level = GameObject.FindGameObjectWithTag ("LevelParent").GetComponent<LevelSegment> ();
 		noteParent = GameObject.FindGameObjectWithTag ("NoteParent");
+		parallax = GameObject.FindGameObjectWithTag ("Parallax").GetComponent<BackgroundController> ();
 		resettingLevel = false;
 		musicCon.startMusic ();
 	}
@@ -35,6 +37,8 @@ public class GameController : MonoBehaviour {
 		foreach (Transform child in noteParent.transform) {
 			child.GetComponent<NoteMover> ().resetNote ();
 		}
+		parallax.stopScrolling ();
+		parallax.resetParallax ();
 		level.resetLevel ();
 	}
 
@@ -50,9 +54,14 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
+	public void stopParallax() {
+		parallax.stopScrolling ();
+	}
+
 	public void startPlay() {
 		musicCon.restartMusic ();
 		level.startScrolling ();
 		startAllNotes ();
+		parallax.startScrolling ();
 	}
 }
