@@ -96,7 +96,7 @@ public class PlayerController : MonoBehaviour {
 				destroyCorrectNote (inputName);
 				correctInputs.Enqueue(new PlayerInput(inputName));
 			} else {
-				Debug.Log("miss")
+				Debug.Log ("miss");
 				Invoke (inputName, inputDelay);
 			}
 		}
