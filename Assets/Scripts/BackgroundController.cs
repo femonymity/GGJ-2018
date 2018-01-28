@@ -4,24 +4,36 @@ using UnityEngine;
 
 public class BackgroundController : MonoBehaviour {
 
-	public Transform startPos;
+	public float startX;
 	public float parallaxScrollSpeed;
+	public bool scrolling;
 
 	// Use this for initialization
 	void Start () {
-		startPos = transform;
+		startX = transform.position.x;
+		scrolling = true;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		parallaxScroll ();
+		if (scrolling) {
+			parallaxScroll ();
+		}
 	}
 
 	void parallaxScroll() {
 		transform.position = new Vector2 (transform.position.x - (parallaxScrollSpeed * Time.deltaTime), transform.position.y);
 	}
 
+	public void startScrolling() {
+		scrolling = true;
+	}
+
+	public void stopScrolling() {
+		scrolling = false;
+	}
+
 	public void resetParallax() {
-		transform.position = startPos.position;
+		transform.position = new Vector2 (startX, transform.position.y);
 	}
 }
