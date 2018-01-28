@@ -33,8 +33,8 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void startPlay() {
-		Debug.Log ("starting game");
 		musicCon.restartMusic ();
 		level.startScrolling ();
+		player.resetTimer ();
 	}
 }
