@@ -28,7 +28,7 @@ public class NoteMover : MonoBehaviour {
 	}
 
 	public void resetNote() {
-		gameObject.SetActive (true);
+		GetComponent<SpriteRenderer> ().enabled = true;
 		transform.position = new Vector2 (startX, transform.position.y);
 		inZone = false;
 	}

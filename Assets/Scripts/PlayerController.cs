@@ -100,7 +100,8 @@ public class PlayerController : MonoBehaviour {
 		foreach (Transform child in noteParent.transform) {
 			NoteMover note = child.GetComponent<NoteMover> ();
 			if (note.isInZone () && note.inputName == inputName) {
-				note.gameObject.SetActive (false);
+				note.gameObject.GetComponent<ParticleSystem> ().Play();
+				note.gameObject.GetComponent<SpriteRenderer> ().enabled = false;
 			}
 		}
 	}
