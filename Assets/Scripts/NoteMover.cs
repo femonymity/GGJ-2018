@@ -5,14 +5,20 @@ using UnityEngine;
 public class NoteMover : MonoBehaviour {
 
 	public float noteSpeed;
+	public bool inZone;
 
-	
-
-	// Use this for initialization
-	void Start () {
-		
+	public bool isInZone () {
+		return inZone;
 	}
-	
+
+	void OnTriggerEnter2D () {
+		inZone = true;
+	}
+
+	void OnTriggerExit2D () {
+		inZone = false;
+	}
+
 	// Update is called once per frame
 	void Update () {
 		transform.position = new Vector2 (transform.position.x - (noteSpeed * Time.deltaTime), transform.position.y);
