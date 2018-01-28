@@ -57,6 +57,8 @@ public class PlayerController : MonoBehaviour {
 			rb.velocity = new Vector2 (rb.velocity.x, 0.0f);
 			falling = false;
 		} else if (other.gameObject.tag == "ActionTrigger") {
+			Debug.Log ("trigger action");
+			Debug.Log (other.gameObject.name);
 			PlayerInput nextInput = correctInputs.Dequeue ();
 			Invoke (nextInput.inputName , 0.0f);
 		}
@@ -92,6 +94,7 @@ public class PlayerController : MonoBehaviour {
 			if (note.GetComponent<NoteMover> ().isInZone ()) {
 				correctInputs.Enqueue (new PlayerInput (inputName));
 				success = true;
+				Destroy (note);
 				Debug.Log ("Right");
 			}
 		}
@@ -117,8 +120,9 @@ public class PlayerController : MonoBehaviour {
 		//TODO play animation
 
 		jumping = true;
-		jumpTime = 0.15f;
-		airTime = 0.3f;
+		jumpTime = 0.2f;
+		airTime = 0.7f;
+		rb.velocity = new Vector2 (rb.velocity.x, 12.0f);
 	}
 
 	private void highjump() {
@@ -127,10 +131,12 @@ public class PlayerController : MonoBehaviour {
 		jumping = true;
 		jumpTime = 0.35f;
 		airTime = 0.05f;
+		rb.velocity = new Vector2 (rb.velocity.x, 12.0f);
 	}
 
 	public void spawnPlayer() {
 		//TODO
+		rb.constraints &= ~RigidbodyConstraints2D.FreezePositionX;
 		transform.position = startLocation;
 		enablePlayer();
 		GetComponent<SpriteRenderer> ().enabled = true;
@@ -138,6 +144,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	private void killPlayer() {
+		rb.constraints &= ~RigidbodyConstraints2D.FreezePositionX;
 		MusicController musicCon = GameObject.FindGameObjectWithTag ("MusicController").GetComponent<MusicController> ();
 		musicCon.pauseMusic();
 		musicCon.playDeathSound ();

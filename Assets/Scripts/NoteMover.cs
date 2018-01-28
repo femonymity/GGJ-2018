@@ -12,6 +12,7 @@ public class NoteMover : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D () {
+		Debug.Log ("enter");
 		inZone = true;
 	}
 
