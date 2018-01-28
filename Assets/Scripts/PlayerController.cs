@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour {
 	public bool jumping = false;
 	public bool falling = false;
 
+	public bool sliding = false;
+
 	public Vector2 startLocation;
 	public float inputDelay = 2.0f;
 	public Rigidbody2D rb;
@@ -117,9 +119,9 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	private void duck() {
-		//TODO play animation
+		anim.SetTrigger ("Slide");
 
-		//TODO reduce hitbox height
+
 	}
 
 	private void longjump() {

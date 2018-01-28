@@ -31,6 +31,7 @@ public class GameController : MonoBehaviour {
 
 	public void resetLevel() {
 		resettingLevel = true;
+		GameObject.FindGameObjectWithTag ("Parallax").GetComponent<BackgroundController> ().resetParallax();
 		foreach (Transform child in noteParent.transform) {
 			child.GetComponent<NoteMover> ().resetNote ();
 		}

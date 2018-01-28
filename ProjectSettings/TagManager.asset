@@ -10,6 +10,7 @@ TagManager:
   - Note
   - ActionTrigger
   - NoteParent
+  - Parallax
   layers:
   - Default
   - TransparentFX
