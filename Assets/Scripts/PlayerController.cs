@@ -51,17 +51,19 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-	void OnTriggerEnter2D (Collider2D other) {
-		Debug.Log (other.gameObject.name);
-		if (other.gameObject.tag == "Obstacle") {
-			killPlayer ();
-		} else if (other.gameObject.tag == "Terrain" && falling) {
+	void OnCollisionEnter2D (Collision2D other) {
+		if ((other.gameObject.tag == "Terrain") && falling) {
 			rb.velocity = new Vector2 (rb.velocity.x, 0.0f);
 			anim.SetTrigger ("Landing");
 			falling = false;
+		} 
+	}
+
+	void OnTriggerEnter2D (Collider2D other) {
+		if (other.gameObject.tag == "Obstacle") {
+			killPlayer ();
 		} else if (other.gameObject.tag == "ActionTrigger") {
-			Debug.Log ("trigger action");
-			Debug.Log (other.gameObject.name);
+			Debug.Log ("take action");
 			PlayerInput nextInput = correctInputs.Dequeue ();
 			Invoke (nextInput.inputName , 0.0f);
 		}
@@ -92,12 +94,13 @@ public class PlayerController : MonoBehaviour {
 
 	private bool addCorrectInput(string inputName) {
 		bool success = false;
-		GameObject[] notes = GameObject.FindGameObjectsWithTag ("Note");
-		foreach (GameObject note in notes) {
-			if (note.GetComponent<NoteMover> ().isInZone ()) {
+		GameObject noteParent = GameObject.FindGameObjectWithTag ("NoteParent");
+		foreach (Transform child in noteParent.transform) {
+			NoteMover note = child.GetComponent<NoteMover> ();
+			if (note.isInZone ()) {
 				correctInputs.Enqueue (new PlayerInput (inputName));
 				success = true;
-				note.SetActive (false);
+				note.gameObject.SetActive (false);
 				Debug.Log ("Right");
 			}
 		}
