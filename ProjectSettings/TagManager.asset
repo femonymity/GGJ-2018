@@ -9,6 +9,7 @@ TagManager:
   - Obstacle
   - Note
   - ActionTrigger
+  - NoteParent
   layers:
   - Default
   - TransparentFX
