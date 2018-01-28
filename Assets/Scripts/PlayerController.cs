@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour {
 	public bool sliding = false;
 
 	public Vector2 startLocation;
-	public float inputDelay = 6 / 7;
+	public float inputDelay = 2.5f;
 	public Rigidbody2D rb;
 
 	// Use this for initialization
@@ -75,6 +75,7 @@ public class PlayerController : MonoBehaviour {
 
 	private void getPlayerInput() {
 		string inputName = "";
+		bool success = false;
 		if (Input.GetButtonDown ("jump")) {
 			inputName = "jump";
 			midiAnim.SetTrigger ("Jump");
@@ -89,58 +90,72 @@ public class PlayerController : MonoBehaviour {
 			midiAnim.SetTrigger ("HighJump");
 		}
 
-		if ((inputName != string.Empty)) {
-			destroyCorrectNote (inputName);
-			Invoke (inputName, inputDelay);
+		if (inputName != string.Empty) {
+			if (success) {
+				Debug.Log ("hit");
+				destroyCorrectNote (inputName);
+				correctInputs.Enqueue(new PlayerInput(inputName));
+			} else {
+				Debug.Log("miss")
+				Invoke (inputName, inputDelay);
+			}
 		}
 	}
 
-	private void destroyCorrectNote(string inputName) {
+	private bool destroyCorrectNote(string inputName) {
+		bool success = false;
 		GameObject noteParent = GameObject.FindGameObjectWithTag ("NoteParent");
 		foreach (Transform child in noteParent.transform) {
 			NoteMover note = child.GetComponent<NoteMover> ();
 			if (note.isInZone () && note.inputName == inputName) {
 				note.gameObject.GetComponent<ParticleSystem> ().Play();
 				note.gameObject.GetComponent<SpriteRenderer> ().enabled = false;
+				success = true;
 			}
 		}
+		return success;
 	}
 
 	private void jump() {
-		anim.SetTrigger ("Jump");
+		if (!falling || jumping || hanging) {
+			anim.SetTrigger ("Jump");
 
-		jumping = true;
-		jumpTime = 0.25f;
-		airTime = 0.1f;
-		rb.velocity = new Vector2 (rb.velocity.x, 12.0f);
+			jumping = true;
+			jumpTime = 0.25f;
+			airTime = 0.1f;
+			rb.velocity = new Vector2 (rb.velocity.x, 12.0f);
+		}
 	}
 
 	private void duck() {
-		anim.SetTrigger ("Slide");
+		if (!falling || jumping || hanging) {
+			anim.SetTrigger ("Slide");
+		}
 	}
 
 	private void longjump() {
-		//TODO play animation
-		anim.SetTrigger ("Jump");
+		if (!falling || jumping || hanging) {
+			anim.SetTrigger ("Jump");
 
-		jumping = true;
-		jumpTime = 0.2f;
-		airTime = 0.7f;
-		rb.velocity = new Vector2 (rb.velocity.x, 12.0f);
+			jumping = true;
+			jumpTime = 0.2f;
+			airTime = 0.7f;
+			rb.velocity = new Vector2 (rb.velocity.x, 12.0f);
+		}
 	}
 
 	private void highjump() {
-		//TODO play animation
-		anim.SetTrigger ("Jump");
+		if (!falling || jumping || hanging) {
+			anim.SetTrigger ("Jump");
 
-		jumping = true;
-		jumpTime = 0.35f;
-		airTime = 0.05f;
-		rb.velocity = new Vector2 (rb.velocity.x, 12.0f);
+			jumping = true;
+			jumpTime = 0.35f;
+			airTime = 0.05f;
+			rb.velocity = new Vector2 (rb.velocity.x, 12.0f);
+		}
 	}
 
 	public void spawnPlayer() {
-		//TODO
 		rb.constraints &= ~RigidbodyConstraints2D.FreezePositionX;
 		transform.position = startLocation;
 		enablePlayer();
