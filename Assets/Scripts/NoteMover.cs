@@ -8,10 +8,10 @@ public class NoteMover : MonoBehaviour {
 	public bool inZone;
 	public bool scrolling;
 	public string inputName;
-	public Transform startPos;
+	public float startX;
 
 	void Start() {
-		startPos = transform;
+		startX = transform.position.x;
 		scrolling = true;
 	}
 
@@ -29,12 +29,11 @@ public class NoteMover : MonoBehaviour {
 
 	public void resetNote() {
 		gameObject.SetActive (true);
-		transform.position = startPos.position;
+		transform.position = new Vector2 (startX, transform.position.y);
 		inZone = false;
 	}
 
 	void OnTriggerEnter2D () {
-		Debug.Log ("in zone");
 		inZone = true;
 	}
 
@@ -43,7 +42,7 @@ public class NoteMover : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	void Update () { 
+	void Update () {
 		if (scrolling) {
 			transform.position = new Vector2 (transform.position.x - (noteSpeed * Time.deltaTime), transform.position.y);
 		}

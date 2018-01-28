@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour {
 	public bool sliding = false;
 
 	public Vector2 startLocation;
-	public float inputDelay = 2.0f;
+	public float inputDelay = 6 / 7;
 	public Rigidbody2D rb;
 
 	// Use this for initialization
@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour {
 		anim = GetComponent<Animator> ();
 		midiAnim = GameObject.FindGameObjectWithTag("M1D1").GetComponent<Animator>();
 
-		startLocation = new Vector2 (-9.5f, -1.2f);
+		startLocation = new Vector2 (transform.position.x, transform.position.y);
 	}
 
 	// Update is called once per frame
@@ -66,51 +66,43 @@ public class PlayerController : MonoBehaviour {
 		if (other.gameObject.tag == "Obstacle") {
 			killPlayer ();
 		} else if (other.gameObject.tag == "ActionTrigger") {
-			Debug.Log ("take action");
-			PlayerInput nextInput = correctInputs.Dequeue ();
-			Invoke (nextInput.inputName , 0.0f);
+			if (correctInputs.Count > 0) {
+				PlayerInput nextInput = correctInputs.Dequeue ();
+				Invoke (nextInput.inputName , 0.0f);
+			}
 		}
 	}
 
 	private void getPlayerInput() {
-		bool correctInput = false;
 		string inputName = "";
 		if (Input.GetButtonDown ("jump")) {
 			inputName = "jump";
 			midiAnim.SetTrigger ("Jump");
-			correctInput = addCorrectInput (inputName);
 		} else if (Input.GetButtonDown ("duck")) {
 			inputName = "duck";
-			correctInput = addCorrectInput (inputName);
 			midiAnim.SetTrigger ("Duck");
 		} else if (Input.GetButtonDown ("longjump")) {
 			inputName = "longjump";
-			correctInput = addCorrectInput (inputName);
 			midiAnim.SetTrigger ("LongJump");
 		} else if (Input.GetButtonDown ("highjump")) {
 			inputName = "highjump";
-			correctInput = addCorrectInput (inputName);
 			midiAnim.SetTrigger ("HighJump");
 		}
 
-		if ((inputName != string.Empty) && !correctInput) {
-			Debug.Log ("Wrong");
+		if ((inputName != string.Empty)) {
+			destroyCorrectNote (inputName);
 			Invoke (inputName, inputDelay);
 		}
 	}
 
-	private bool addCorrectInput(string inputName) {
-		bool success = false;
+	private void destroyCorrectNote(string inputName) {
 		GameObject noteParent = GameObject.FindGameObjectWithTag ("NoteParent");
 		foreach (Transform child in noteParent.transform) {
 			NoteMover note = child.GetComponent<NoteMover> ();
 			if (note.isInZone () && note.inputName == inputName) {
-				correctInputs.Enqueue (new PlayerInput (inputName));
-				success = true;
 				note.gameObject.SetActive (false);
 			}
 		}
-		return success;
 	}
 
 	private void jump() {
@@ -124,8 +116,6 @@ public class PlayerController : MonoBehaviour {
 
 	private void duck() {
 		anim.SetTrigger ("Slide");
-
-
 	}
 
 	private void longjump() {

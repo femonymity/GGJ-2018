@@ -12,6 +12,7 @@ TagManager:
   - NoteParent
   - Parallax
   - M1D1
+  - LevelParent
   layers:
   - Default
   - TransparentFX

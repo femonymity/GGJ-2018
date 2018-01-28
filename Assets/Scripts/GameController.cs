@@ -14,7 +14,7 @@ public class GameController : MonoBehaviour {
 	void Start () {
 		musicCon = GameObject.FindGameObjectWithTag ("MusicController").GetComponent<MusicController> ();
 		player = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerController> ();
-		level = GameObject.FindGameObjectWithTag ("Terrain").GetComponent<LevelSegment> ();
+		level = GameObject.FindGameObjectWithTag ("LevelParent").GetComponent<LevelSegment> ();
 		noteParent = GameObject.FindGameObjectWithTag ("NoteParent");
 		resettingLevel = false;
 		musicCon.startMusic ();
@@ -44,8 +44,15 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
+	public void startAllNotes() {
+		foreach (Transform child in noteParent.transform) {
+			child.GetComponent<NoteMover> ().startNote ();
+		}
+	}
+
 	public void startPlay() {
 		musicCon.restartMusic ();
 		level.startScrolling ();
+		startAllNotes ();
 	}
 }
