@@ -104,11 +104,10 @@ public class PlayerController : MonoBehaviour {
 		GameObject noteParent = GameObject.FindGameObjectWithTag ("NoteParent");
 		foreach (Transform child in noteParent.transform) {
 			NoteMover note = child.GetComponent<NoteMover> ();
-			if (note.isInZone ()) {
+			if (note.isInZone () && note.inputName == inputName) {
 				correctInputs.Enqueue (new PlayerInput (inputName));
 				success = true;
 				note.gameObject.SetActive (false);
-				Debug.Log ("Right");
 			}
 		}
 		return success;

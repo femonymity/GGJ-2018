@@ -7,6 +7,7 @@ public class NoteMover : MonoBehaviour {
 	public float noteSpeed;
 	public bool inZone;
 	public bool scrolling;
+	public string inputName;
 	public Transform startPos;
 
 	void Start() {

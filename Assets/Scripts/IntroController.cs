@@ -31,7 +31,7 @@ public class IntroController : MonoBehaviour {
 			currentText.color = c;
 			yield return null;
 		}
-
+			
 		yield return new WaitForSeconds (1.5f);
 
 		for (float f = 1f; f>=0; f-= 0.02f) {
@@ -49,7 +49,6 @@ public class IntroController : MonoBehaviour {
 			text.text = "Loading...";
 			StartCoroutine ("loadLevelOne");
 		}
-
 	}
 
 	IEnumerator loadLevelOne() {
