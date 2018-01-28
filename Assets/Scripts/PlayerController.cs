@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour {
 	public bool jumping = false;
 	public bool falling = false;
 	public bool sliding = false;
+	public bool godMode;
 
 	private float fallSpeed = -12.0f;
 	private float jumpSpeed = 12.0f;
@@ -77,30 +78,42 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	private void getPlayerInput() {
-		string inputName = "";
-		bool success = false;
-		if (Input.GetButtonDown ("jump")) {
-			inputName = "jump";
-			midiAnim.SetTrigger ("Jump");
-		} else if (Input.GetButtonDown ("duck")) {
-			inputName = "duck";
-			midiAnim.SetTrigger ("Duck");
-		} else if (Input.GetButtonDown ("longjump")) {
-			inputName = "longjump";
-			midiAnim.SetTrigger ("LongJump");
-		} else if (Input.GetButtonDown ("highjump")) {
-			inputName = "highjump";
-			midiAnim.SetTrigger ("HighJump");
-		}
+		if (godMode) {
+			GameObject noteParent = GameObject.FindGameObjectWithTag ("NoteParent");
+			foreach (Transform child in noteParent.transform) {
+				NoteMover note = child.GetComponent<NoteMover> ();
+				if (note.isInZone ()) {
+					note.gameObject.GetComponent<ParticleSystem> ().Play();
+					note.gameObject.GetComponent<SpriteRenderer> ().enabled = false;
+					correctInputs.Enqueue(new PlayerInput(note.inputName));
+				}
+			}
+		} else {
+			string inputName = "";
+			bool success = false;
+			if (Input.GetButtonDown ("jump")) {
+				inputName = "jump";
+				midiAnim.SetTrigger ("Jump");
+			} else if (Input.GetButtonDown ("duck")) {
+				inputName = "duck";
+				midiAnim.SetTrigger ("Duck");
+			} else if (Input.GetButtonDown ("longjump")) {
+				inputName = "longjump";
+				midiAnim.SetTrigger ("LongJump");
+			} else if (Input.GetButtonDown ("highjump")) {
+				inputName = "highjump";
+				midiAnim.SetTrigger ("HighJump");
+			}
 
-		if (inputName != string.Empty) {
-			success = destroyCorrectNote (inputName);
-			if (success) {
-				Debug.Log ("hit");
-				correctInputs.Enqueue(new PlayerInput(inputName));
-			} else {
-				Debug.Log ("miss");
-				Invoke (inputName, inputDelay);
+			if (inputName != string.Empty) {
+				success = destroyCorrectNote (inputName);
+				if (success) {
+					Debug.Log ("hit");
+					correctInputs.Enqueue(new PlayerInput(inputName));
+				} else {
+					Debug.Log ("miss");
+					Invoke (inputName, inputDelay);
+				}
 			}
 		}
 	}
