@@ -12,9 +12,9 @@ public class PlayerController : MonoBehaviour {
 	private float jumpTime;
 	private float airTime;
 
-	private bool hanging = false;
-	private bool jumping = false;
-	private bool falling = false;
+	public bool hanging = false;
+	public bool jumping = false;
+	public bool falling = false;
 
 	public Vector2 startLocation;
 	public float inputDelay = 2.0f;
@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour {
 		} else if (hanging) {
 			airTime -= Time.deltaTime;
 			if (airTime <= 0.0f) {
+				anim.SetTrigger ("Falling");
 				hanging = false;
 				falling = true;
 				rb.velocity = new Vector2 (rb.velocity.x, -8.0f);
@@ -51,10 +52,12 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D (Collider2D other) {
+		Debug.Log (other.gameObject.name);
 		if (other.gameObject.tag == "Obstacle") {
 			killPlayer ();
 		} else if (other.gameObject.tag == "Terrain" && falling) {
 			rb.velocity = new Vector2 (rb.velocity.x, 0.0f);
+			anim.SetTrigger ("Landing");
 			falling = false;
 		} else if (other.gameObject.tag == "ActionTrigger") {
 			Debug.Log ("trigger action");
@@ -102,7 +105,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	private void jump() {
-		//TODO play animation
+		anim.SetTrigger ("Jump");
 
 		jumping = true;
 		jumpTime = 0.25f;
@@ -118,6 +121,7 @@ public class PlayerController : MonoBehaviour {
 
 	private void longjump() {
 		//TODO play animation
+		anim.SetTrigger ("Jump");
 
 		jumping = true;
 		jumpTime = 0.2f;
@@ -127,6 +131,7 @@ public class PlayerController : MonoBehaviour {
 
 	private void highjump() {
 		//TODO play animation
+		anim.SetTrigger ("Jump");
 
 		jumping = true;
 		jumpTime = 0.35f;
