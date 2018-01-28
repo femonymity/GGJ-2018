@@ -35,6 +35,5 @@ public class GameController : MonoBehaviour {
 	public void startPlay() {
 		musicCon.restartMusic ();
 		level.startScrolling ();
-		player.resetTimer ();
 	}
 }

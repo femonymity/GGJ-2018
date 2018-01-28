@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerInput {
 
-	public string inputName { get; set;}
+	public string inputName;
 
 	public PlayerInput (string name) {
 		inputName = name;

@@ -929,7 +929,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 918115788}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fabfe3c99c2391439a376678b0aa781, type: 3}
+  m_Script: {fileID: 11500000, guid: 44b9d4f24c5ae724991bebb12eb79a08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   scrollSpeed: 5
@@ -1612,7 +1612,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1748755666}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b30ac632ad147f14dae6fe67fd65baef, type: 3}
+  m_Script: {fileID: 11500000, guid: 10a3c55e35e79794e9a2d100c949b95f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   musicSource: {fileID: 1748755668}
@@ -1727,11 +1727,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1823151024}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28667c2b5e9d5ee48ab1023d8d61a2a5, type: 3}
+  m_Script: {fileID: 11500000, guid: 11cc92f4041eea943be92175f8359ac5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   startLocation: {x: 0, y: 0}
-  beatInterval: 2
+  inputDelay: 2
   rb: {fileID: 1823151027}
 --- !u!70 &1823151026
 CapsuleCollider2D:
@@ -1804,7 +1804,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: bd1989b4e42a0454097f657dfb368bd8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1870,7 +1870,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1841650333}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 135ef0a26f97c5c42bf938d5d9a209a6, type: 3}
+  m_Script: {fileID: 11500000, guid: 18979aac8a820eb4e95e4d1a58e077d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   level: {fileID: 0}

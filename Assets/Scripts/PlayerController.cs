@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-	private Queue<PlayerInput> inputs;
+	private Queue<PlayerInput> correctInputs;
 	private PlayerInput currentInput;
 	private GameController gameCon;
 	private Animator anim;
-	private int maxInputs { get; set; }
 	private float timeToBeat;
 	private float jumpTime;
 	private float airTime;
@@ -17,36 +16,22 @@ public class PlayerController : MonoBehaviour {
 	private bool jumping = false;
 	private bool falling = false;
 
-
 	public Vector2 startLocation;
-	public float beatInterval;
+	public float inputDelay = 2.0f;
 	public Rigidbody2D rb;
 
 	// Use this for initialization
 	void Start () {
-		inputs = new Queue<PlayerInput> ();
+		correctInputs = new Queue<PlayerInput> ();
 		gameCon = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
 		anim = GetComponent<Animator> ();
 
 		startLocation = new Vector2 (-9.5f, -1.2f);
-		maxInputs = 8;
-		timeToBeat = beatInterval;
 	}
 
 	// Update is called once per frame
 	void Update () {
-		timeToBeat -= Time.deltaTime;
 		getPlayerInput ();
-
-		if (timeToBeat <= 0) {
-			if (inputs.Count > 0) {
-				currentInput = inputs.Dequeue ();
-				Invoke (currentInput.inputName, 0.0f);
-			}
-
-			float diff = timeToBeat * -1;
-			timeToBeat = beatInterval + diff;
-		}
 
 		if (jumping) {
 			jumpTime -= Time.deltaTime;
@@ -71,21 +56,46 @@ public class PlayerController : MonoBehaviour {
 		} else if (other.gameObject.tag == "Terrain" && falling) {
 			rb.velocity = new Vector2 (rb.velocity.x, 0.0f);
 			falling = false;
+		} else if (other.gameObject.tag == "ActionTrigger") {
+			PlayerInput nextInput = correctInputs.Dequeue ();
+			Invoke (nextInput.inputName , 0.0f);
 		}
 	}
 
 	private void getPlayerInput() {
-		if (!(inputs.Count >= maxInputs)) {
-			if (Input.GetButtonDown ("jump")) {
-				inputs.Enqueue (new PlayerInput ("jump"));
-			} else if (Input.GetButtonDown ("duck")) {
-				inputs.Enqueue (new PlayerInput ("duck"));
-			} else if (Input.GetButtonDown ("longjump")) {
-				inputs.Enqueue (new PlayerInput ("longjump"));
-			} else if (Input.GetButtonDown ("highjump")) {
-				inputs.Enqueue (new PlayerInput ("highjump"));
+		bool correctInput = false;
+		string inputName = "";
+		if (Input.GetButtonDown ("jump")) {
+			inputName = "jump";
+			correctInput = addCorrectInput (inputName);
+		} else if (Input.GetButtonDown ("duck")) {
+			inputName = "duck";
+			correctInput = addCorrectInput (inputName);
+		} else if (Input.GetButtonDown ("longjump")) {
+			inputName = "longjump";
+			correctInput = addCorrectInput (inputName);
+		} else if (Input.GetButtonDown ("highjump")) {
+			inputName = "highjump";
+			correctInput = addCorrectInput (inputName);
+		}
+
+		if ((inputName != string.Empty) && !correctInput) {
+			Debug.Log ("Wrong");
+			Invoke (inputName, inputDelay);
+		}
+	}
+
+	private bool addCorrectInput(string inputName) {
+		bool success = false;
+		GameObject[] notes = GameObject.FindGameObjectsWithTag ("Note");
+		foreach (GameObject note in notes) {
+			if (note.GetComponent<NoteMover> ().isInZone ()) {
+				correctInputs.Enqueue (new PlayerInput (inputName));
+				success = true;
+				Debug.Log ("Right");
 			}
 		}
+		return success;
 	}
 
 	private void jump() {
@@ -134,7 +144,8 @@ public class PlayerController : MonoBehaviour {
 
 		anim.SetTrigger ("Death");
 
-		inputs.Clear ();
+		correctInputs.Clear ();
+		CancelInvoke ();
 	}
 
 	public void endOfPlayerDeath() {
@@ -148,9 +159,5 @@ public class PlayerController : MonoBehaviour {
 
 	public void enablePlayer() {
 		gameObject.SetActive (true);
-	}
-
-	public void resetTimer() {
-		timeToBeat = beatInterval;
 	}
 }
