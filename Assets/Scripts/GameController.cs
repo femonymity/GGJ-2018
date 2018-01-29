@@ -23,7 +23,7 @@ public class GameController : MonoBehaviour {
 		resettingLevel = false;
 		musicCon.startMusic ();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		if (resettingLevel && level.levelReady) {
@@ -70,7 +70,7 @@ public class GameController : MonoBehaviour {
 	public void winGame() {
 		parallax.stopScrolling ();
 		level.stopScrolling ();
-		player.rb.velocity = new Vector2 (7.0f, 0.0f);
+		player.rb.constraints &= ~RigidbodyConstraints2D.FreezePositionX;
 
 		StartCoroutine ("loadOutro");
 	}
