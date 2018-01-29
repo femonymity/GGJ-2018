@@ -3735,6 +3735,7 @@ MonoBehaviour:
   scrolling: 0
   inputName: duck
   startX: 0
+  isActive: 1
 --- !u!212 &50791745
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7790,6 +7791,7 @@ MonoBehaviour:
   scrolling: 0
   inputName: highjump
   startX: 0
+  isActive: 1
 --- !u!212 &237420543
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11883,6 +11885,7 @@ MonoBehaviour:
   scrolling: 0
   inputName: duck
   startX: 0
+  isActive: 1
 --- !u!212 &429218169
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15549,6 +15552,7 @@ MonoBehaviour:
   scrolling: 0
   inputName: duck
   startX: 0
+  isActive: 1
 --- !u!212 &465389938
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19254,6 +19258,7 @@ MonoBehaviour:
   scrolling: 0
   inputName: duck
   startX: 0
+  isActive: 1
 --- !u!212 &558637027
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22805,6 +22810,7 @@ MonoBehaviour:
   scrolling: 0
   inputName: longjump
   startX: 0
+  isActive: 1
 --- !u!212 &612157638
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -26356,6 +26362,7 @@ MonoBehaviour:
   scrolling: 0
   inputName: longjump
   startX: 0
+  isActive: 1
 --- !u!212 &624264350
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -29958,6 +29965,7 @@ MonoBehaviour:
   scrolling: 0
   inputName: jump
   startX: 0
+  isActive: 1
 --- !u!212 &706374268
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -33768,6 +33776,7 @@ MonoBehaviour:
   scrolling: 0
   inputName: highjump
   startX: 0
+  isActive: 1
 --- !u!212 &929903999
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -37512,6 +37521,7 @@ MonoBehaviour:
   scrolling: 0
   inputName: highjump
   startX: 0
+  isActive: 1
 --- !u!212 &1023895828
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -41063,6 +41073,7 @@ MonoBehaviour:
   scrolling: 0
   inputName: highjump
   startX: 0
+  isActive: 1
 --- !u!212 &1024695506
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -44736,6 +44747,7 @@ MonoBehaviour:
   scrolling: 0
   inputName: duck
   startX: 0
+  isActive: 1
 --- !u!212 &1140060143
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -48338,6 +48350,7 @@ MonoBehaviour:
   scrolling: 0
   inputName: duck
   startX: 0
+  isActive: 1
 --- !u!212 &1153802984
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -52026,6 +52039,7 @@ MonoBehaviour:
   scrolling: 0
   inputName: jump
   startX: 0
+  isActive: 1
 --- !u!212 &1181403862
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -55582,6 +55596,7 @@ MonoBehaviour:
   scrolling: 0
   inputName: jump
   startX: 0
+  isActive: 1
 --- !u!212 &1186542681
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -59601,6 +59616,7 @@ MonoBehaviour:
   scrolling: 0
   inputName: duck
   startX: 0
+  isActive: 1
 --- !u!212 &1300114929
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -63391,6 +63407,7 @@ MonoBehaviour:
   scrolling: 0
   inputName: duck
   startX: 0
+  isActive: 1
 --- !u!212 &1420358441
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -66942,6 +66959,7 @@ MonoBehaviour:
   scrolling: 0
   inputName: duck
   startX: 0
+  isActive: 1
 --- !u!212 &1427893303
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -70544,6 +70562,7 @@ MonoBehaviour:
   scrolling: 0
   inputName: longjump
   startX: 0
+  isActive: 1
 --- !u!212 &1496814910
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -74094,6 +74113,7 @@ MonoBehaviour:
   scrolling: 0
   inputName: jump
   startX: 0
+  isActive: 1
 --- !u!212 &1500660568
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -74259,6 +74279,7 @@ MonoBehaviour:
   scrolling: 0
   inputName: longjump
   startX: 0
+  isActive: 1
 --- !u!212 &1580617900
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -77871,6 +77892,7 @@ MonoBehaviour:
   scrolling: 0
   inputName: highjump
   startX: 0
+  isActive: 1
 --- !u!212 &1639570611
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -81559,6 +81581,7 @@ MonoBehaviour:
   scrolling: 0
   inputName: longjump
   startX: 0
+  isActive: 1
 --- !u!212 &1653457330
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -85110,6 +85133,7 @@ MonoBehaviour:
   scrolling: 0
   inputName: highjump
   startX: 0
+  isActive: 1
 --- !u!212 &1669151795
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -88953,6 +88977,7 @@ MonoBehaviour:
   scrolling: 0
   inputName: jump
   startX: 0
+  isActive: 1
 --- !u!212 &1762028116
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -89023,7 +89048,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1823151025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89040,7 +89065,7 @@ MonoBehaviour:
   jumping: 0
   falling: 0
   sliding: 0
-  godMode: 1
+  godMode: 0
   startLocation: {x: 0, y: 0}
   inputDelay: 2
   rb: {fileID: 1823151027}
@@ -93138,6 +93163,7 @@ MonoBehaviour:
   scrolling: 0
   inputName: longjump
   startX: 0
+  isActive: 1
 --- !u!212 &1927781407
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -96773,6 +96799,7 @@ MonoBehaviour:
   scrolling: 0
   inputName: longjump
   startX: 0
+  isActive: 1
 --- !u!212 &1959777197
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -100329,6 +100356,7 @@ MonoBehaviour:
   scrolling: 0
   inputName: jump
   startX: 0
+  isActive: 1
 --- !u!212 &1996639704
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -103880,6 +103908,7 @@ MonoBehaviour:
   scrolling: 0
   inputName: longjump
   startX: 0
+  isActive: 1
 --- !u!212 &1996694771
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -107704,6 +107733,7 @@ MonoBehaviour:
   scrolling: 0
   inputName: longjump
   startX: 0
+  isActive: 1
 --- !u!212 &2086723179
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -111255,6 +111285,7 @@ MonoBehaviour:
   scrolling: 0
   inputName: jump
   startX: 0
+  isActive: 1
 --- !u!212 &2102795653
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -114806,6 +114837,7 @@ MonoBehaviour:
   scrolling: 0
   inputName: duck
   startX: 0
+  isActive: 1
 --- !u!212 &2103151113
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -118450,6 +118482,7 @@ MonoBehaviour:
   scrolling: 0
   inputName: jump
   startX: 0
+  isActive: 1
 --- !u!212 &2113088599
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -122001,6 +122034,7 @@ MonoBehaviour:
   scrolling: 0
   inputName: highjump
   startX: 0
+  isActive: 1
 --- !u!212 &2124054177
 SpriteRenderer:
   m_ObjectHideFlags: 0
