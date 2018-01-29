@@ -41,7 +41,7 @@ public class OutroController : MonoBehaviour {
 		}
 	}
 
-	IEnumerator loadLevelOne() {
+	IEnumerator loadCredits() {
 		AsyncOperation aSyncLoad = SceneManager.LoadSceneAsync ("Credits");
 		while(!aSyncLoad.isDone) {
 			yield return null;
