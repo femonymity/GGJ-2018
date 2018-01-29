@@ -1,0 +1,4 @@
+Build level
+Add credits/end screen
+	-Add all scenes to build settings
+Fix parallax

@@ -19279,6 +19279,7 @@ Transform:
   m_Children:
   - {fileID: 82140468}
   - {fileID: 1404560524}
+  - {fileID: 1780327312}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -67066,12 +67067,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1780327310}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 253.4, y: 11.2, z: -1.09375}
   m_LocalScale: {x: 1, y: 40, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_Father: {fileID: 918115789}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1823151024
 GameObject:
@@ -67110,7 +67111,7 @@ MonoBehaviour:
   jumping: 0
   falling: 0
   sliding: 0
-  godMode: 1
+  godMode: 0
   startLocation: {x: 0, y: 0}
   inputDelay: 2
   rb: {fileID: 1823151027}
