@@ -69,14 +69,14 @@ public class GameController : MonoBehaviour {
 
 	public void winGame() {
 		parallax.stopScrolling ();
-		//runnerCam.velocity = new Vector3 (-7.0f, 0.0f, 0.0f);
-
-
+		level.stopScrolling ();
+		player.rb.velocity = new Vector2 (7.0f, 0.0f);
 
 		StartCoroutine ("loadOutro");
 	}
 
 	IEnumerator loadOutro() {
+		yield return WaitForSeconds (2.0f);
 		AsyncOperation aSyncLoad = SceneManager.LoadSceneAsync ("Outro");
 		while(!aSyncLoad.isDone) {
 			yield return null;
