@@ -160,7 +160,7 @@ public class PlayerController : MonoBehaviour {
 			Debug.Log ("long jump");
 
 			jumping = true;
-			jumpTime = 0.2f;
+			jumpTime = 0.25f;
 			airTime = 0.7f;
 			rb.velocity = new Vector2 (rb.velocity.x, jumpSpeed);
 		}
