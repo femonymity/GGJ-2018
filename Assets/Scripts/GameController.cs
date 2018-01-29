@@ -76,7 +76,7 @@ public class GameController : MonoBehaviour {
 	}
 
 	IEnumerator loadOutro() {
-		//yield return WaitForSeconds (2.0f);
+		yield return new WaitForSeconds (2.0f);
 		AsyncOperation aSyncLoad = SceneManager.LoadSceneAsync ("Outro");
 		while(!aSyncLoad.isDone) {
 			yield return null;
