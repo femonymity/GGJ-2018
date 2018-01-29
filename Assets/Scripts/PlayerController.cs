@@ -181,7 +181,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	public void spawnPlayer() {
-		rb.constraints &= ~RigidbodyConstraints2D.FreezePositionX;
+		
 		transform.position = startLocation;
 		enablePlayer();
 		GetComponent<SpriteRenderer> ().enabled = true;
