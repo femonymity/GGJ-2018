@@ -35,13 +35,16 @@ public class LevelSegment : MonoBehaviour {
 
 	public void resetLevel() {
 		levelReady = false;
+		foreach (GameObject trigger in GameObject.FindGameObjectsWithTag ("ActionTrigger")) {
+			trigger.GetComponent<BoxCollider2D> ().enabled = true;
+		}
 		stopScrolling ();
 		StartCoroutine ("ScrollToStart");
 	}
 
 	IEnumerator ScrollToStart() {
 		while (!Mathf.Approximately(transform.position.x, 0.0f)) {
-			transform.position = Vector2.MoveTowards (transform.position, new Vector2 (0f, transform.position.y), 20 * Time.deltaTime);
+			transform.position = Vector2.MoveTowards (transform.position, new Vector2 (0f, transform.position.y), 30 * Time.deltaTime);
 			yield return null;
 		}
 		levelReady = true;

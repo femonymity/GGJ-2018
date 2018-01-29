@@ -71,9 +71,11 @@ public class PlayerController : MonoBehaviour {
 			killPlayer ();
 		} else if (other.gameObject.tag == "ActionTrigger") {
 			if (correctInputs.Count > 0) {
+				other.gameObject.GetComponent<BoxCollider2D>().enabled = false;
 				PlayerInput nextInput = correctInputs.Dequeue ();
 				Invoke (nextInput.inputName , 0.0f);
 			}
+
 		}
 	}
 
@@ -82,10 +84,12 @@ public class PlayerController : MonoBehaviour {
 			GameObject noteParent = GameObject.FindGameObjectWithTag ("NoteParent");
 			foreach (Transform child in noteParent.transform) {
 				NoteMover note = child.GetComponent<NoteMover> ();
-				if (note.isInZone ()) {
+				if (note.isInZone () && note.isActive) {
 					note.gameObject.GetComponent<ParticleSystem> ().Play();
 					note.gameObject.GetComponent<SpriteRenderer> ().enabled = false;
 					correctInputs.Enqueue(new PlayerInput(note.inputName));
+					note.isActive = false;
+					//Debug.Log (note.inputName);
 				}
 			}
 		} else {
@@ -108,10 +112,8 @@ public class PlayerController : MonoBehaviour {
 			if (inputName != string.Empty) {
 				success = destroyCorrectNote (inputName);
 				if (success) {
-					Debug.Log ("hit");
 					correctInputs.Enqueue(new PlayerInput(inputName));
 				} else {
-					Debug.Log ("miss");
 					Invoke (inputName, inputDelay);
 				}
 			}
@@ -123,9 +125,10 @@ public class PlayerController : MonoBehaviour {
 		GameObject noteParent = GameObject.FindGameObjectWithTag ("NoteParent");
 		foreach (Transform child in noteParent.transform) {
 			NoteMover note = child.GetComponent<NoteMover> ();
-			if (note.isInZone () && note.inputName == inputName) {
+			if (note.isInZone () && note.inputName == inputName && note.isActive) {
 				note.gameObject.GetComponent<ParticleSystem> ().Play();
 				note.gameObject.GetComponent<SpriteRenderer> ().enabled = false;
+				note.isActive = false;
 				success = true;
 			}
 		}
@@ -134,6 +137,7 @@ public class PlayerController : MonoBehaviour {
 
 	private void jump() {
 		if (!falling && !jumping && !hanging) {
+			Debug.Log ("jump");
 			anim.SetTrigger ("Jump");
 
 			jumping = true;
@@ -145,6 +149,7 @@ public class PlayerController : MonoBehaviour {
 
 	private void duck() {
 		if (!falling && !jumping && !hanging) {
+			Debug.Log ("duck");
 			anim.SetTrigger ("Slide");
 		}
 	}
@@ -152,6 +157,7 @@ public class PlayerController : MonoBehaviour {
 	private void longjump() {
 		if (!falling && !jumping && !hanging) {
 			anim.SetTrigger ("Jump");
+			Debug.Log ("long jump");
 
 			jumping = true;
 			jumpTime = 0.2f;
@@ -163,6 +169,7 @@ public class PlayerController : MonoBehaviour {
 	private void highjump() {
 		if (!falling && !jumping && !hanging) {
 			anim.SetTrigger ("Jump");
+			Debug.Log ("high jump");
 
 			jumping = true;
 			jumpTime = 0.35f;

@@ -9,6 +9,7 @@ public class NoteMover : MonoBehaviour {
 	public bool scrolling;
 	public string inputName;
 	public float startX;
+	public bool isActive = true;
 
 	void Start() {
 		startX = transform.position.x;
@@ -31,6 +32,7 @@ public class NoteMover : MonoBehaviour {
 		GetComponent<SpriteRenderer> ().enabled = true;
 		transform.position = new Vector2 (startX, transform.position.y);
 		inZone = false;
+		isActive = true;
 	}
 
 	void OnTriggerEnter2D () {
