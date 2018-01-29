@@ -14,6 +14,7 @@ TagManager:
   - M1D1
   - LevelParent
   - LevelEnd
+  - IntroBackground
   layers:
   - Default
   - TransparentFX
