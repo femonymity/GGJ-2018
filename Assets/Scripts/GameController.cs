@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class GameController : MonoBehaviour {
 
+	public Camera runnerCam;
 	private MusicController musicCon;
 	public LevelSegment level;
 	public PlayerController player;
@@ -63,5 +65,21 @@ public class GameController : MonoBehaviour {
 		level.startScrolling ();
 		startAllNotes ();
 		parallax.startScrolling ();
+	}
+
+	public void winGame() {
+		parallax.stopScrolling ();
+		//runnerCam.velocity = new Vector3 (-7.0f, 0.0f, 0.0f);
+
+
+
+		StartCoroutine ("loadOutro");
+	}
+
+	IEnumerator loadOutro() {
+		AsyncOperation aSyncLoad = SceneManager.LoadSceneAsync ("Outro");
+		while(!aSyncLoad.isDone) {
+			yield return null;
+		}
 	}
 }

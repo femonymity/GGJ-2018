@@ -71,11 +71,13 @@ public class PlayerController : MonoBehaviour {
 			killPlayer ();
 		} else if (other.gameObject.tag == "ActionTrigger") {
 			if (correctInputs.Count > 0) {
-				other.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+				other.gameObject.GetComponent<BoxCollider2D> ().enabled = false;
 				PlayerInput nextInput = correctInputs.Dequeue ();
-				Invoke (nextInput.inputName , 0.0f);
+				Invoke (nextInput.inputName, 0.0f);
 			}
 
+		} else if (other.gameObject.tag == "LevelEnd") {
+			gameCon.winGame ();
 		}
 	}
 
@@ -89,7 +91,7 @@ public class PlayerController : MonoBehaviour {
 					note.gameObject.GetComponent<SpriteRenderer> ().enabled = false;
 					correctInputs.Enqueue(new PlayerInput(note.inputName));
 					note.isActive = false;
-					//Debug.Log (note.inputName);
+					Debug.Log (note.inputName);
 				}
 			}
 		} else {
