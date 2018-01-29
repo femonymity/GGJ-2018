@@ -8,9 +8,12 @@ public class IntroController : MonoBehaviour {
 
 	public Text text;
 	public List<Text> allText;
+	public GameObject background;
+	public float spinSpeed;
 
 	void Start() {
 		StartCoroutine ("showText", allText);
+		background = GameObject.FindGameObjectWithTag ("IntroBackground");
 	}
 
 	// Update is called once per frame
